@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>50 жылдық кездесу кеші</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ec;
+    --cream-dark: #f5e9d4;
+    --gold: #c8921a;
+    --gold-light: #e4b84a;
+    --gold-pale: #f0d080;
+    --gold-deep: #8b6010;
+    --text-dark: #3a2a0a;
+    --text-medium: #5a4010;
+    --border-gold: rgba(200, 146, 26, 0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Times New Roman', Times, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(228, 184, 74, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(200, 146, 26, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== GOLD LINES ===== */
+  .gold-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+  }
+  .gold-line-double {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 24px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 28px;
+    margin: 8px 0;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .divider-line.rev {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .divider-dot { color: var(--gold); font-size: 14px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 52px 28px 30px;
+    text-align: center;
+  }
+
+  .year-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .year-badge-line {
+    width: 44px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-light));
+  }
+  .year-badge-line.rev {
+    background: linear-gradient(90deg, var(--gold-light), transparent);
+  }
+  .year-badge-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* CALLIGRAPHIC 50 */
+  .hero-number {
+    font-family: 'Great Vibes', cursive;
+    font-size: 110px;
+    font-weight: 400;
+    line-height: 1;
+    background: linear-gradient(160deg, var(--gold-pale) 0%, var(--gold) 40%, var(--gold-deep) 70%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 0px;
+    filter: drop-shadow(0 2px 10px rgba(200, 146, 26, 0.35));
+  }
+
+  /* жылдық — Times New Roman Bold Italic */
+  .hero-zhyldyk {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 4px rgba(200, 146, 26, 0.2);
+  }
+
+  .hero-subtitle-small {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 26px;
+    font-style: italic;
+  }
+
+  /* SVG ornament replacing image */
+  .svg-ornament {
+    margin: 6px auto 18px;
+    display: block;
+  }
+
+  /* ===== GREETING BLOCK ===== */
+  .greeting-block {
+    padding: 28px 28px 8px;
+    text-align: center;
+  }
+
+  .hero-greeting {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 18px;
+  }
+
+  .hero-invite-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--text-medium);
+    padding: 0 4px;
+  }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-section {
+    padding: 32px 24px 16px;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .countdown-item {
+    flex: 1;
+    max-width: 74px;
+    background: linear-gradient(160deg, rgba(253,246,236,0.95), rgba(240,220,160,0.2));
+    border: 1px solid rgba(200, 146, 26, 0.35);
+    border-radius: 3px;
+    padding: 14px 6px 10px;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(200, 146, 26, 0.1);
+  }
+  .countdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  }
+
+  .countdown-num {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    background: linear-gradient(160deg, var(--gold-pale), var(--gold), var(--gold-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .countdown-lbl {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-style: italic;
+  }
+
+  /* ===== CALENDAR ===== */
+  .calendar-wrap {
+    padding: 4px 24px 32px;
+    text-align: center;
+  }
+
+  .calendar-card {
+    display: inline-block;
+    border: 1px solid rgba(200, 146, 26, 0.4);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(200, 146, 26, 0.15);
+    min-width: 170px;
+  }
+
+  .cal-header {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    padding: 10px 24px 9px;
+    text-align: center;
+  }
+  .cal-header-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 3px;
+    color: rgba(253, 246, 236, 0.92);
+    text-transform: uppercase;
+  }
+
+  .cal-body {
+    background: var(--cream);
+    padding: 16px 32px 20px;
+  }
+
+  .cal-day {
+    font-family: 'Great Vibes', cursive;
+    font-size: 76px;
+    font-weight: 400;
+    line-height: 1;
+    background: linear-gradient(160deg, var(--gold-pale), var(--gold), var(--gold-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    filter: drop-shadow(0 2px 6px rgba(200, 146, 26, 0.3));
+  }
+
+  .cal-month {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text-medium);
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  .cal-weekday {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--gold-deep);
+    margin-top: 4px;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 22px;
+    border: 1px solid rgba(200, 146, 26, 0.4);
+    border-radius: 100px;
+    background: linear-gradient(90deg, rgba(253,246,236,0.9), rgba(245,233,212,0.6));
+  }
+  .time-badge-icon { color: var(--gold); font-size: 17px; }
+  .time-badge-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--gold-deep);
+    letter-spacing: 1px;
+  }
+
+  /* ===== QUOTE ===== */
+  .quote-section {
+    padding: 14px 30px 30px;
+    text-align: center;
+  }
+
+  .quote-mark {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 60px;
+    line-height: 0.6;
+    color: var(--gold-light);
+    opacity: 0.55;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .quote-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17.5px;
+    font-style: italic;
+    line-height: 1.9;
+    color: var(--text-medium);
+  }
+
+  /* ===== VENUE ===== */
+  .venue-section {
+    padding: 10px 24px 28px;
+  }
+
+  .section-title-gold {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 23px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .venue-card {
+    border: 1px solid rgba(200, 146, 26, 0.35);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(200, 146, 26, 0.1);
+  }
+
+  .venue-top {
+    background: linear-gradient(135deg, rgba(200,146,26,0.12), rgba(200,146,26,0.04));
+    padding: 20px 20px 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(200,146,26,0.22);
+  }
+
+  .venue-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .venue-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .venue-type {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-style: italic;
+  }
+
+  .venue-address {
+    padding: 16px 20px;
+    text-align: center;
+  }
+  .venue-address-label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .venue-address-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-medium);
+    line-height: 1.6;
+  }
+
+  /* ===== MAP BUTTON ===== */
+  .map-btn-wrap {
+    padding: 4px 24px 36px;
+    text-align: center;
+  }
+
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 14px 30px;
+    border: 1.5px solid var(--gold);
+    border-radius: 3px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    box-shadow: 0 4px 16px rgba(200,146,26,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .map-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  }
+  .map-btn-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--cream);
+    text-transform: uppercase;
+  }
+  .map-btn-icon { font-size: 18px; color: var(--cream); }
+
+  /* ===== FINAL ===== */
+  .final-section {
+    padding: 10px 28px 20px;
+    text-align: center;
+  }
+
+  .final-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 27px;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .small-stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 4px 0;
+  }
+  .small-stars span {
+    display: inline-block;
+    width: 4px; height: 4px;
+    background: var(--gold-light);
+    border-radius: 50%;
+  }
+  .small-stars span:nth-child(3) {
+    width: 7px; height: 7px;
+    background: var(--gold);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 16px 24px 44px;
+    text-align: center;
+  }
+  .footer-text {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(139, 96, 16, 0.45);
+    font-style: italic;
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fi   { animation: fadeInUp 0.9s ease both; }
+  .fi2  { animation: fadeInUp 0.9s 0.15s ease both; }
+  .fi3  { animation: fadeInUp 0.9s 0.30s ease both; }
+  .fi4  { animation: fadeInUp 0.9s 0.45s ease both; }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ===== HERO ===== -->
+  <div class="hero fi">
+    <div class="year-badge">
+      <div class="year-badge-line"></div>
+      <span class="year-badge-text">1976 · 2026</span>
+      <div class="year-badge-line rev"></div>
+    </div>
+
+    <!-- Calligraphic 50 -->
+    <span class="hero-number">50</span>
+    <div class="hero-zhyldyk">жылдық</div>
+    <div class="hero-subtitle-small">мектеп бітіру · кездесу кеші</div>
+
+
+
+    <div class="gold-line-double">
+      <div class="gold-line"></div>
+      <div class="gold-line"></div>
+    </div>
+  </div>
+
+  <!-- Greeting -->
+  <div class="greeting-block fi2">
+    <div class="hero-greeting">Құрметті сыныптастар!</div>
+    <p class="hero-invite-text">
+      Сіздерді мектеп бітіргенімізге 50&nbsp;жыл толуына арналған кездесу кешіне шақырамыз.
+    </p>
+  </div>
+
+  <div class="divider" style="margin-top:24px;">
+    <div class="divider-line"></div>
+    <span class="divider-dot">✦</span>
+    <div class="divider-line rev"></div>
+  </div>
+
+  <!-- ===== COUNTDOWN ===== -->
+
+  <p style="
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #5a4010;
+  text-align: center;
+  padding: 0 8px;
+">
+  Бүгін міне 50 жылдық есік ашып,<br>
+  Сағынысып, көрістік құшақтасып.<br>
+  Әр өңірден жиналып, ақ тілекті,<br>
+  Арнаудамыз жан-жақтан мейірім шашып.
+  <br><br>
+  Кластастар, бүгін міне ғажайып күн,<br>
+  Шырқалатын көңілді ғажайып жыр.<br>
+  50 жылдық 50 мың шаттық сыйлап,<br>
+  Гүл-гүл жайнап жүрейік өмірде бұл!
+</p>
+  <div class="countdown-section fi3">
+    <div class="section-label">Кездесуге дейін</div>
+    <div class="countdown-grid">
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-days">00</span>
+        <div class="countdown-lbl">Күн</div>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-hours">00</span>
+        <div class="countdown-lbl">Сағат</div>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-mins">00</span>
+        <div class="countdown-lbl">Минут</div>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-secs">00</span>
+        <div class="countdown-lbl">Секунд</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CALENDAR ===== -->
+  <div class="calendar-wrap fi4">
+    <div class="calendar-card">
+      <div class="cal-header">
+        <div class="cal-header-text">2026 жыл</div>
+      </div>
+      <div class="cal-body">
+        <span class="cal-day">30</span>
+        <div class="cal-month">мамыр</div>
+        <div class="cal-weekday">Сенбі</div>
+      </div>
+    </div>
+    <div style="margin-top:18px;">
+      <div class="time-badge">
+        <span class="time-badge-icon">🕕</span>
+        <span class="time-badge-text">Сағат 18:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-dot">✦</span>
+    <div class="divider-line rev"></div>
+  </div>
+
+  <!-- ===== QUOTE ===== -->
+  <div class="quote-section">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">
+      Арада қанша жыл өтсе де, мектептегі естеліктер жүрегімізде мәңгі сақталады. Балалық шақтың бал дәуренін бірге өткізген сыныптастардың басын қосып, қуанышты жүздесуге, жылы әңгімеге және естелікке толы кешке шақырамыз.
+    </p>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-dot">✦</span>
+    <div class="divider-line rev"></div>
+  </div>
+
+  <!-- ===== VENUE ===== -->
+  <div class="venue-section" style="padding-top:28px;">
+    <div class="section-title-gold">Өтетін орны</div>
+    <div class="venue-card">
+      <div class="venue-top">
+        <span class="venue-icon">🏛️</span>
+        <div class="venue-name">«Дария»</div>
+        <div class="venue-type">Салтанат сарайы</div>
+      </div>
+      <div class="venue-address">
+        <div class="venue-address-label">Мекенжайы</div>
+        <div class="venue-address-text">Қызылорда қаласы,<br>«Дария» салтанат сарайы</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2GIS Button -->
+  <div class="map-btn-wrap">
+    <a href="https://2gis.kz/kyzylorda/geo/70000001077453606/65.531481,44.790043" target="_blank" class="map-btn">
+      <span class="map-btn-icon">📍</span>
+      <span class="map-btn-text">2GIS-те ашу</span>
+    </a>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-dot">✦</span>
+    <div class="divider-line rev"></div>
+  </div>
+
+  <!-- ===== FINAL ===== -->
+  <div class="final-section" style="padding-top:28px;">
+
+   
+    <p class="final-text">Кездескенше,<br>қымбатты сыныптастар!</p>
+    <div class="small-stars" style="margin-top:10px;">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="gold-line-double" style="margin-bottom:16px;">
+      <div class="gold-line"></div>
+      <div class="gold-line"></div>
+    </div>
+    <div class="footer-text">1976 · Бірге өскен · Бірге есейген · 2026</div>
+  </div>
+
+</div>
+
+<script>
+function updateCountdown() {
+  const target = new Date('2026-05-30T18:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
